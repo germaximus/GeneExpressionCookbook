@@ -6,8 +6,8 @@ Helpful snippets on gene expression analysis
 If you have a ```bam``` file, it has to be sorted by coordinates and then indexed to enable most of the samtools functionality.  
 ```bash
 samtools sort -@ 20 in.bam -o sorted.bam
--@  number of processors
--o  output file
+#-@  number of processors
+#-o  output file
 
 samtools index sorted.bam
 # creates sorted.bai file in the same folder
@@ -16,8 +16,8 @@ Bam file can contain alignments to the genome or to the transcriptome. In the fo
 ```bash
 # example of extracting coverage depth for a particular transcript from STAR output (in -quantMode TranscriptomeSAM)
 samtools depth -a [in.bam|in.sam] -r 'rna-NM_007463.4' -o out.file
--a  Output all positions (including those with zero depth)
--aa Output absolutely all positions, including unused reference sequences.
--o  Write output to FILE
--r CHR:FROM-TO  Only report depth in specified region.
+#-a  Output all positions (including those with zero depth)
+#-aa Output absolutely all positions, including unused reference sequences.
+#-o  Write output to FILE
+#-r CHR:FROM-TO  Only report depth in specified region.
 ```
