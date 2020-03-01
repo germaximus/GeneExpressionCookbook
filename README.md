@@ -19,5 +19,5 @@ samtools depth -a [in.bam|in.sam] -r 'rna-NM_007463.4' -o out.file
 #-a  Output all positions (including those with zero depth)
 #-aa Output absolutely all positions, including unused reference sequences.
 #-o  Write output to FILE
-#-r CHR:FROM-TO  Only report depth in specified region.
+#-r CHR:FROM-TO  Only report depth in a specified region. If aligned in transcriptome coordinates, the CHR is the name of the transcript.
 ```
