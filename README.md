@@ -31,9 +31,9 @@ Create separate folders for each pair of sequencing files and transfer them to t
 ```bash
 # cd to the directory containing *fastq.gz files (R1 and R2 pair)
 for file in *_1.fastq.gz; do
-  base = "${file%_1.fastq.gz}"
-  r1 = "$file"
-  r2 = "$base""_2.fastq.gz"
+  base="${file%_1.fastq.gz}"
+  r1="$file"
+  r2="$base""_2.fastq.gz"
   mkdir "$base"
   mv "$r1" "$base"
   mv "$r2" "$base"
