@@ -52,3 +52,20 @@ file2=$(find "$dir" -name "*_2.fq.gz");
 echo "$(cutadapt -j 20 -m 75 -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA -o "$dir""trimmed_1.fq.gz" -p "$dir""trimmed_2.fq.gz" "$file1" "$file2")";
 done
 ```
+Count reads per gene in sam files
+```bash
+grep -ve '^@' aligned.sam | cut -f 3 | sort -bgr | uniq -c
+#### grep parameters ###
+# e   - exclude lines with the pattern (in this case exclude lines that start with @ symbol, which marks headers in sam)
+# v   - take regular expressions as pattern
+#### cut parameters ###
+# f   - select a column/field
+#### sort parameters, easy to remember as 'bigger' ###
+# g   - general numeric sort
+# b   - ignore leading blanks
+# r   - sort from smaller to larger
+### uniq parameters ###
+# c   - count the identical lines (until a different line is met). Returns the line and the count.
+
+
+```
