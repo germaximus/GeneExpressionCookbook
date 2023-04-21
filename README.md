@@ -70,7 +70,8 @@ grep -ve '^@' aligned.sam | cut -f 3 | sort -bgr | uniq -c
 ```
 
 Remove non-templated nucleotide addition from the 5' end. 
-```
+
+```bash
 # a line from bowtie-1 output (native format)
 # notice 0:G>T field which indicates a mismatch in the first position of the read. It is very common in ribosome profiling library preparations due to non-templated nucleotide addition during the reverse transcription phase.
 VH01141:12:AACG2FYM5:1:1101:55042:1189_TAGGGTTA 1:N:0:GGATGT	+	NR_003287.4_28S	3838	TTCCCTACCTACTATCCAGCGAAACCACAGCC	CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC;	0	0:G>T
