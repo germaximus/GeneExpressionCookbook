@@ -67,5 +67,19 @@ grep -ve '^@' aligned.sam | cut -f 3 | sort -bgr | uniq -c
 ### uniq parameters ###
 # c   - count the identical lines (until a different line is met). Returns the line and the count.
 
+```
+
+Remove non-templated nucleotide addition from the 5' end. 
+```
+# a line from bowtie-1 output (native format)
+# notice 0:G>T field which indicates a mismatch in the first position of the read. It is very common in ribosome profiling library preparations due to non-templated nucleotide addition during the reverse transcription phase.
+VH01141:12:AACG2FYM5:1:1101:55042:1189_TAGGGTTA 1:N:0:GGATGT	+	NR_003287.4_28S	3838	TTCCCTACCTACTATCCAGCGAAACCACAGCC	CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC;	0	0:G>T
+# this is how it should look like after removing the mismatch
+VH01141:12:AACG2FYM5:1:1101:55042:1189_TAGGGTTA 1:N:0:GGATGT	+	NR_003287.4_28S	3839	TCCCTACCTACTATCCAGCGAAACCACAGCC	CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC;	0
+```
+
+```bash
+awk -F"\t" '{if ($8 ~ "0:[A-Z]>[A-Z]$") {print $1"\t"$2"\t"$3"\t"$4+1"\t"substr($5,2)"\t"substr($6,2)"\t"$7} else {print $0} }' aligned_reads.bwt >aligned_reads_corrected.bwt
+
 
 ```
