@@ -27,6 +27,14 @@ samtools view [in.bam|in.sam] transcriptName >output.sam
 # transcript name should be in the format TRANSCRIPT:FROM-TO or just TRANSCRIPT
 ```
 
+
+Other useful samtools operations
+```bash
+# Count only primary aligned reads -> multimappers only counted once(!)
+samtools view -c -F 260 input.bam
+```
+
+
 Create separate folders for each pair of sequencing files and transfer them to these folders.  
 ```bash
 # cd to the directory containing *fastq.gz files (R1 and R2 pair)
