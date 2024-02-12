@@ -32,6 +32,10 @@ Other useful samtools operations
 ```bash
 # Count only primary aligned reads -> multimappers only counted once(!)
 samtools view -c -F 260 input.bam
+# count only unmapped reads
+samtools view -c -f 4 input.bam
+# top level statistics on aligned reads
+samtools flagstat input.bam
 ```
 
 
